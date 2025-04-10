@@ -25,12 +25,12 @@ model Task {
 
 model eventos {
   id        Int     @id @default(autoincrement())
-  titulo    String
-  descricao String
-  data      DateTime
-  local     String
-  capacidade Int?
-  categoria String?
+  title    String
+  description String
+  date      String
+  location     String
+  capacity Int?
+  category String?
   price     Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

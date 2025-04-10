@@ -5,10 +5,16 @@ class EventoModel {
         return await prisma.task.findMany();
     };
 
-    create = async (descricao) => {
-        return await prisma.task.create({
+    create = async (title, description, date, location, capacity, category, price) => {
+        return await prisma.eventos.create({
             data: {
-                descricao,
+                title,
+                description,
+                date,
+                location,
+                capacity,
+                category,   
+                price,
             },
         });
     };
