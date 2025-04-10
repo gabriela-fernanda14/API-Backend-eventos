@@ -19,24 +19,27 @@ Este projeto é um back-end de gerenciamento de eventos. O sistema permite que o
 git clone https://github.com/gabriela-fernanda14/API-Backend-eventos.git
 ```
 
-3. Instale as dependências:
+2. Instale as dependências:
 
 npm install
 
-4. Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis de ambiente:
+
+
+3. Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis de ambiente:
 
 
 DATABASE_URL="file:./dev.db"
 
-5. Inicie o servidor:
+4. Inicie o servidor:
 
 npm run dev
 
-
+npx prisma migrate dev
 
 ## Como testar
 
 1. Crie um evento:
+Exemplo de Resposta:
 {
     "title": "Evento de Teste",
     "description": "Descrição do evento",
@@ -46,23 +49,36 @@ npm run dev
     "category": "Tecnologia",
     "price": 50
   }'
-```
+
 
 2. Obtenha todos os eventos:
-
-```bash
-curl --request GET \
-  --url http://localhost:3000/events
-```
+Exemplo de Resposta:
+  {
+    "id": 1,
+    "title": "Evento de Teste",
+    "description": "Descrição do evento",
+    "date": "2025-04-15",
+    "location": "São Paulo",
+    "capacity": 100,
+    "category": "Tecnologia",
+    "price": 50
+  }
 
 3. Obtenha um evento específico:
-
-```bash
-curl --request GET \
-  --url http://localhost:3000/events/1
-```
+Exemplo de Resposta:
+{
+  "id": 1,
+  "title": "Evento de Teste",
+  "description": "Descrição do evento",
+  "date": "2025-04-15",
+  "location": "São Paulo",
+  "capacity": 100,
+  "category": "Tecnologia",
+  "price": 50
+}
 
 4. Atualize um evento:
+Exemplo de Resposta:
 {
     "title": "Novo Evento",
     "description": "Descrição do novo evento",
@@ -72,14 +88,23 @@ curl --request GET \
     "category": "Educação",
     "price": 100
   }'
-```
+Exemplo de Resposta:
+{
+  "id": 1,
+  "title": "Evento Atualizado",
+  "description": "Descrição atualizada",
+  "date": "2025-06-01",
+  "location": "Curitiba",
+  "capacity": 150,
+  "category": "Negócios",
+  "price": 75
+}
 
 5. Exclua um evento:
-
-```bash
-curl --request DELETE \
-  --url http://localhost:3000/events/1
-```
+Exemplo de Resposta:
+{
+  "message": "Evento deletado com sucesso"
+}
 
 ## Referências
 
@@ -90,5 +115,5 @@ curl --request DELETE \
 
 ## Autor
 
-[2TDS](https://github.com/2TDS)
+https://github.com/gabriela-fernanda14
 
