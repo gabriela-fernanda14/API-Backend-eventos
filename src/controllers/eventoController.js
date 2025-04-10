@@ -34,6 +34,33 @@ class EventoController {
       res.status(500).json({ erro: "Erro ao criar evento" });
     }
   };
+  update = async (req, res) => {
+      const { id } = req.params;
+      const { title, description, date, location, capacity, category, price } = req.body;
+  
+      try {
+        const eventoAtualizado = await eventoModel.update(
+          Number(id),
+          title,
+          description,
+          date,
+          location,
+          capacity,
+          category,
+          price
+        );
+  
+        if (!eventoAtualizado) {
+          return res.status(404).json({ erro: "Evento não encontrado!" });
+        }
+  
+        res.json(eventoAtualizado);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ erro: "Erro ao atualizar evento!" });
+      }
+    };
+  
 
 }
 
