@@ -29,9 +29,9 @@ model eventos {
   descricao String
   data      DateTime
   local     String
-  capacidade Int
-  categoria String
-  price     Int
+  capacidade Int?
+  categoria String?
+  price     Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
