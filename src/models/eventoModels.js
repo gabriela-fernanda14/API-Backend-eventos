@@ -51,6 +51,12 @@ class EventoModel {
             throw error;
         }
     };
+
+    getById = async (id) => {
+        return await prisma.eventos.findUnique({
+            where: { id },
+        });
+    };
 }
 
 export default new EventoModel();

@@ -4,8 +4,10 @@ import eventoController from "../controllers/eventoController.js";
 
 const router = express.Router();
 router.get("/", eventoController.getAll);
+router.get("/:id", eventoController.getById);
 router.post("/", eventoController.create);
 router.put("/:id", eventoController.update);
 router.delete("/:id", eventoController.delete);
+
 
 export default router;

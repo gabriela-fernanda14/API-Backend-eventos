@@ -76,6 +76,22 @@ class EventoController {
       res.status(500).json({ error: "Erro ao excluir evento!" });
     }
   };
+  getById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const evento = await eventoModel.getById(parseInt(id));
+
+      if (!evento) {
+        return res.status(404).json({ erro: "Evento não encontrado" });
+      }
+
+      res.json(evento);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ erro: "Erro ao buscar evento" });
+    }
+  };
 
 
 }
