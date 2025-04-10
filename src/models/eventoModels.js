@@ -23,19 +23,31 @@ class EventoModel {
             const evento = await prisma.eventos.update({
                 where: { id },
                 data: {
-                    title: title !== undefined ? title : true,
-                    description: description !== undefined ? description : true,
-                    date: date !== undefined ? date : true,
-                    location: location !== undefined ? location : true,
-                    capacity: capacity !== undefined ? capacity : true,
-                    category: category !== undefined ? category : true,
-                    price: price !== undefined ? price : true,
+                    title,
+                    description,
+                    date,
+                    location,
+                    capacity,
+                    category,
+                    price,
                 },
             });
 
             return evento;
         } catch (error) {
             console.log("Error", error);
+            throw error;
+        }
+    };
+    delete = async (id) => {
+        try {
+            const eventoDeletado = await prisma.eventos.delete({
+                where: { id },
+            });
+
+            return eventoDeletado;
+        } catch (error) {
+            console.log("Erro ao deletar eventoi!", error);
             throw error;
         }
     };
